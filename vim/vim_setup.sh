@@ -64,14 +64,14 @@ if [ ! -d $DPATH ] ; then
     git clone https://github.com/Lokaltog/vim-powerline.git $DPATH
 fi
 
-#if [ "$ENV" == "MAC" ] ; then
-#    #install colors-solarized
-#    DPATH=$VIMPATH/bundle/vim-colors-solarized 
-#    if [ ! -d $DPATH ] ; then 
-#        git clone git://github.com/altercation/vim-colors-solarized.git $DPATH
-#    fi
-#fi 
-#
+if [ "$ENV" == "MAC" ] ; then
+    #install colors-solarized
+    DPATH=$VIMPATH/bundle/vim-colors-solarized 
+    if [ ! -d $DPATH ] ; then 
+        git clone git://github.com/altercation/vim-colors-solarized.git $DPATH
+    fi
+fi 
+
 
 #setup lucius color
 
@@ -81,6 +81,7 @@ if [ ! -d $DPATH ] ; then
 fi
 
 if [ ! -f ~/.vimrc ] ; then
-    ln -s ./.vimrc_mac ~/.vimrc
+     CPWD=`pwd`
+    ln -s $CPWD/.vimrc_mac ~/.vimrc
 fi
 
