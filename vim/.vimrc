@@ -18,7 +18,8 @@ set shiftwidth=4 " 設定縮排寬度 = 4
 set tabstop=4    " tab 的字元數
 set softtabstop=4
 set expandtab   " 用 space 代替 tab
- 
+set list         "show tab and end of line in vim
+set listchars=tab:>.,eol:$
 set ruler        " 顯示右下角設定值
 set backspace=2  " 在 insert 也可用 backspace
 set ic           " 設定搜尋忽略大小寫
@@ -32,10 +33,14 @@ set cursorline   " 顯示目前的游標位置
  
 set laststatus=2
 set statusline=%4*%<\%m%<[%f\%r%h%w]\ [%{&ff},%{&fileencoding},%Y]%=\[Position=%l,%v,%p%%]
-
+" setup spelling check"
+set spell spelllang=en_us
 
 set background=dark
-colorscheme torte
+set t_Co=256
+let g:solarized_termcolors=256
+let g:solarized_termtrans = 1
+colorscheme solarized
 
 filetype plugin on 
 filetype on                 " enables filetype detection
@@ -45,17 +50,46 @@ augroup filetypedetect
  au BufNewFile,BufRead *.pig set filetype=pig syntax=pig
 augroup END 
 " build the whole project with f8
-map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-" use cscope to find the tags
-nmap <c-f> :cs find g <c-r>=expand("<cword>")<cr><cr>
+" map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 let g:tagbar_usearrows = 1
 nnoremap <leader>l :TagbarToggle<CR>
 
-set guifont=Ubuntu\ Mono\ for\ VimPowerline\ 14
-let g:Powerline_symbols = 'fancy'
+" map vim command p with pgvy, where gv: reselect what was originally
+" selected. y to copy it again.
+xnoremap p pgvy
+
+set guifont=Monaco\ for\ Powerline
+"let g:Powerline_symbols = 'fancy'
 let g:NERDTreeWinSize = 60
+
+let g:EclimCompletionMethod = 'omnifunc'
+let g:ycm_csharp_server_port = 2000
 
 "noremap <leader>o <Esc>:CommandT<CR>
 "noremap <leader>O <Esc>:CommandTFlush<CR>
 "noremap <leader>m <Esc>:CommandTBuffer<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" cscope setting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has("cscope")
+  set csprg=/usr/local/bin/cscope
+  set csto=1
+  set cst
+  set nocsverb
+  " add any database in current directory
+  if filereadable("cscope.out")
+      cs add cscope.out
+  endif
+  set csverb
+endif
+
+nmap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
