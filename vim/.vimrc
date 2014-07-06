@@ -1,7 +1,6 @@
-" 檔案編碼
+"config file encoding"
 set encoding=utf-8
 set fileencodings=utf-8,cp950
-" 編輯喜好設定
 
 " pathgen
 "call pathogen#runtime_append_all_bundles()
@@ -33,10 +32,9 @@ set cursorline   " 顯示目前的游標位置
  
 set laststatus=2
 set statusline=%4*%<\%m%<[%f\%r%h%w]\ [%{&ff},%{&fileencoding},%Y]%=\[Position=%l,%v,%p%%]
-" setup spelling check"
-set spell spelllang=en_us
 
 set background=dark
+"set background=light
 set t_Co=256
 let g:solarized_termcolors=256
 let g:solarized_termtrans = 1
@@ -50,26 +48,16 @@ augroup filetypedetect
  au BufNewFile,BufRead *.pig set filetype=pig syntax=pig
 augroup END 
 " build the whole project with f8
-" map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+map <F8> :!cscope_gen .<CR>
+" trigger tagbar with f7
+map <F7> :TagbarToggle<CR>
 
 let g:tagbar_usearrows = 1
-nnoremap <leader>l :TagbarToggle<CR>
 
-" map vim command p with pgvy, where gv: reselect what was originally
-" selected. y to copy it again.
-xnoremap p pgvy
-
-set guifont=Monaco\ for\ Powerline
-"let g:Powerline_symbols = 'fancy'
+set guifont=Ubuntu\ Mono\ for\ VimPowerline\ 14
+let g:Powerline_symbols = 'fancy'
 let g:NERDTreeWinSize = 60
-
-let g:EclimCompletionMethod = 'omnifunc'
-let g:ycm_csharp_server_port = 2000
-
-"noremap <leader>o <Esc>:CommandT<CR>
-"noremap <leader>O <Esc>:CommandTFlush<CR>
-"noremap <leader>m <Esc>:CommandTBuffer<CR>
-
+nnoremap <silent> <F5> :NERDTree<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " cscope setting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -93,3 +81,32 @@ nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>
 nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+
+"config tagbar for golang"
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }"
