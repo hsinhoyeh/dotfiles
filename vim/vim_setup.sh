@@ -7,12 +7,16 @@ ENV=MAC
 #ENV=UBUNTU
 
 VIMPATH=~/.vim
+VIMBKPATH=~/.vim_bk
+
+if [ -d $VIMPATH ] ; then
+    mv $VIMPATH $VIMBKPATH
+fi
 
 #setup pathgen
 if [ ! -d $VIMPATH ] ; then 
-    mkdir -p $VIMPATH/autoload $VIMPATH/bundle; \
-    curl -Sso $VIMPATH/autoload/pathogen.vim \
-    https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+    mkdir -p $VIMPATH/autoload $VIMPATH/bundle && \
+    curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 fi
 
 #setup color-sampler-pack
@@ -72,19 +76,6 @@ if [ "$ENV" == "MAC" ] ; then
     fi
 fi 
 
-
-#setup lucius color
-
-DPATH=$VIMPATH/bundle/vim-lucius
-if [ ! -d $DPATH ] ; then
-    git clone https://github.com/jonathanfilip/vim-lucius.git $DPATH
-fi
-
-if [ ! -f ~/.vimrc ] ; then
-     CPWD=`pwd`
-    ln -s $CPWD/.vimrc_mac ~/.vimrc
-fi
-
 DPATH=$VIMPATH/bundle/vim-gitgutter
 if [ ! -d $DPATH ] ; then
     git clone https://github.com/airblade/vim-gitgutter.git $DPATH
@@ -99,3 +90,9 @@ DPATH=$VIMPATH/bundle/syntastic
 if [ ! -d $DPATH ] ; then
     git clone https://github.com/scrooloose/syntastic.git $DPATH
 fi
+
+if [ ! -f ~/.vimrc ] ; then
+     CPWD=`pwd`
+    ln -s $CPWD/.vimrc_mac ~/.vimrc
+fi
+
