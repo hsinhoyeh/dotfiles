@@ -85,3 +85,17 @@ if [ ! -f ~/.vimrc ] ; then
     ln -s $CPWD/.vimrc_mac ~/.vimrc
 fi
 
+DPATH=$VIMPATH/bundle/vim-gitgutter
+if [ ! -d $DPATH ] ; then
+    git clone https://github.com/airblade/vim-gitgutter.git $DPATH
+fi
+
+DPATH=$VIMPATH/bundle/vim-go
+if [ ! -d $DPATH ] ; then
+    git clone https://github.com/fatih/vim-go.git $DPATH
+fi
+
+DPATH=$VIMPATH/bundle/syntastic
+if [ ! -d $DPATH ] ; then
+    git clone https://github.com/scrooloose/syntastic.git $DPATH
+fi
