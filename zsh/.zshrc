@@ -73,7 +73,7 @@ export TERM="xterm-256color"
 #
 alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
 # brew install coreutils
-export PATH=/usr/local/opt/coreutils/libexec/gnubin:PATH
+export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 
 # add dir-color
 # git clone https://github.com/seebi/dircolors-solarized.git
@@ -87,3 +87,6 @@ fi
 alias ls='ls $LS_OPTIONS -hF'
 alias ll='ls $LS_OPTIONS -lhF'
 alias l='ls $LS_OPTIONS -lAhF'
+alias got='go test -test.v'
+alias gob='go build'
+alias gotcov='go test -test.v -coverprofile=coverage.out'
