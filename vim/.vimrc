@@ -28,9 +28,6 @@ set smartindent  " 設定 smartindent
 set confirm      " 操作過程有衝突時，以明確的文字來詢問
 set history=100  " 保留 100 個使用過的指令
 set cursorline   " 顯示目前的游標位置
- 
-set laststatus=2
-set statusline=%4*%<\%m%<[%f\%r%h%w]\ [%{&ff},%{&fileencoding},%Y]%=\[Position=%l,%v,%p%%]
 
 "set background=dark
 set background=light
@@ -53,8 +50,14 @@ map <F7> :TagbarToggle<CR>
 
 let g:tagbar_usearrows = 1
 
-set guifont=Ubuntu\ Mono\ for\ VimPowerline\ 14
+" default python location for powerline
+set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
+set laststatus=2
+set statusline=%4*%<\%m%<[%f\%r%h%w]\ [%{&ff},%{&fileencoding},%Y]%=\[Position=%l,%v,%p%%]
+
+set guifont=Monaco\ \ for\ Powerline:h14
 let g:Powerline_symbols = 'fancy'
+
 let g:NERDTreeWinSize = 60
 nnoremap <silent> <F5> :NERDTree<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
