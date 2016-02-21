@@ -115,3 +115,13 @@ let g:tagbar_type_go = {
 let g:indentLine_color_term = 239
 let g:indentLine_color_gui = '#09AA08'
 let g:indentLine_char = '│'"
+
+" config syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0 "disable loc_list pop out
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
