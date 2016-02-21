@@ -3,9 +3,8 @@ set encoding=utf-8
 set fileencodings=utf-8,cp950
 
 " pathgen
-"call pathogen#runtime_append_all_bundles()
 call pathogen#infect()
-call pathogen#incubate()
+call pathogen#infect('bundle/{}')
 call pathogen#helptags()
 
 
@@ -33,8 +32,8 @@ set cursorline   " 顯示目前的游標位置
 set laststatus=2
 set statusline=%4*%<\%m%<[%f\%r%h%w]\ [%{&ff},%{&fileencoding},%Y]%=\[Position=%l,%v,%p%%]
 
-set background=dark
-"set background=light
+"set background=dark
+set background=light
 set t_Co=256
 let g:solarized_termcolors=256
 let g:solarized_termtrans = 1

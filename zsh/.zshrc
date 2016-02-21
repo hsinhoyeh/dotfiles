@@ -77,7 +77,7 @@ export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 
 # add dir-color
 # git clone https://github.com/seebi/dircolors-solarized.git
-dircolor=~/github/dircolors-solarized/dircolors.ansi-universal
+dircolor=~/Workspace/github/dircolors-solarized/dircolors.ansi-universal
 if [ "$TERM" != "dumb" ]; then
     export LS_OPTIONS='--color=auto'
     eval `dircolors $dircolor`
