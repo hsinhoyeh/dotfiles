@@ -1,0 +1,21 @@
+[user]
+  name = hsinhoyeh
+  email = yhh92u@gmail.com
+[alias]
+  pr = pull --rebase --stat
+  co = checkout
+  ci = commit
+  st = status --untracked-files=no
+  stfull = status
+  br = branch
+  re = remote
+  di = diff
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  ui = true
+[core]
+  editor = /Applications/MacVim.app/Contents/MacOS/Vim
+
