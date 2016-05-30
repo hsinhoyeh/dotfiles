@@ -71,9 +71,15 @@ export TERM="xterm-256color"
 
 ### import settings from .bashrc ###
 #
-alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+#alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+
+export REDIS_PATH=/Users/hsinho_yeh/Workspace/github/redis-3.0.7/src
+export PATH=$PATH:$REDIS_PATH
+
 # brew install coreutils
 export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+# brew install go
+export PATH=$PATH:/usr/local/opt/go/libexec/bin
 
 # add dir-color
 # git clone https://github.com/seebi/dircolors-solarized.git
@@ -83,6 +89,9 @@ if [ "$TERM" != "dumb" ]; then
     eval `dircolors $dircolor`
 fi
 
+# for arc editor
+export EDITOR=vim
+
 # Useful aliases
 alias ls='ls $LS_OPTIONS -hF'
 alias ll='ls $LS_OPTIONS -lhF'
@@ -90,3 +99,13 @@ alias l='ls $LS_OPTIONS -lAhF'
 alias got='go test -test.v'
 alias gob='go build'
 alias gotcov='go test -test.v -coverprofile=coverage.out'
+alias gitpr='git pull-request'
+alias dc='docker-compose'
+
+# setup docker env
+eval $(docker-machine env dev)
+# use git+hub
+eval "$(hub alias -s)"
+
+# unalias zsh's gb
+unalias gb
