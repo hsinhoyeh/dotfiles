@@ -12,6 +12,7 @@ find $1 -type f -name '*.py' \
     -o -name '*.hpp' \
     -o -name '*.go' \
     -o -name '*.swift' \
+    -o -name '*.js' \
     > cscope.files
 #
 # -b: just build
