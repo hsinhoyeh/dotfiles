@@ -1,6 +1,6 @@
 #!/bin/sh
 
-/usr/local/bin/ctags -R $1
+/usr/local/bin/ctags -R $1 --exclude=.git --exclude=node_modules
 find $1 -type f -name '*.py' \
     -o -name '*.java' \
     -o -name '*.[CH]' \
