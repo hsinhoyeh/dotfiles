@@ -44,7 +44,7 @@ augroup filetypedetect
  au BufNewFile,BufRead *.pig set filetype=pig syntax=pig
 augroup END 
 
-au BufNewFile,BufRead *.py set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent fileformat=unix
+au BufNewFile,BufRead *.py set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent smarttab fileformat=unix
 au BufNewFile,BufRead *.js set tabstop=2 softtabstop=2 shiftwidth=2
 
 " build the whole project with f8
@@ -55,7 +55,7 @@ map <F7> :TagbarToggle<CR>
 let g:tagbar_usearrows = 1
 
 " default python location for powerline
-set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
+set rtp+=/Users/hsinhoyeh/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim
 set laststatus=2
 set statusline=%4*%<\%m%<[%f\%r%h%w]\ [%{&ff},%{&fileencoding},%Y]%=\[Position=%l,%v,%p%%]
 
@@ -127,27 +127,33 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0 "disable loc_list pop out
 let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 1
+let g:syntastic_check_on_wq = 0
 let g:go_list_type = "quickfix"
 
 " configure python-mode
 let g:pymode_lint_options_pep8 =
     \ {'max_line_length': 160}
 let g:pymode_lint_on_write = 0
-let g:pymode_folding = 1
-let g:pymode_syntax_all = 1
-let g:pymode_syntax = 1
+let g:pymode_folding = 0
+let g:pymode_syntax_all = 0
+let g:pymode_syntax = 0
+
+let g:pymode_rope_lookup_project = 0
+let g:pymode_rope_complete_on_dot = 0
+let g:pymode_rope = 0
 
 " ycm setting
-" let g:ycm_path_to_python_interpreter = '/usr/local/bin/python'
-" let g:ycm_server_use_vim_stdout = 0
-" let g:ycm_server_keep_logfiles = 0
+let g:ycm_path_to_python_interpreter = '/usr/local/bin/python3'
+let g:ycm_server_use_vim_stdout = 0
+let g:ycm_server_keep_logfiles = 0
 
 " js setting
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_ngdoc = 1
 let g:javascript_plugin_flow = 1
+let g:syntastic_javascript_checkers=['eslint']
+
