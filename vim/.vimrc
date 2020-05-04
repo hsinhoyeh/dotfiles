@@ -7,6 +7,8 @@ call pathogen#infect()
 call pathogen#infect('bundle/{}')
 call pathogen#helptags()
 
+" use jk to replace esc
+inoremap jk <esc>
 
 syntax enable
 syntax on        " 語法上色顯示
@@ -55,7 +57,7 @@ map <F7> :TagbarToggle<CR>
 let g:tagbar_usearrows = 1
 
 " default python location for powerline
-set rtp+=/Users/hsinhoyeh/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim
+set rtp+=/Users/hsinhoyeh/Library/Python/3.7/lib/python/site-packages/powerline/bindings/vim
 set laststatus=2
 set statusline=%4*%<\%m%<[%f\%r%h%w]\ [%{&ff},%{&fileencoding},%Y]%=\[Position=%l,%v,%p%%]
 
@@ -148,6 +150,7 @@ let g:pymode_rope = 0
 
 " ycm setting
 let g:ycm_path_to_python_interpreter = '/usr/local/bin/python3'
+" let g:ycm_server_python_interpreter  = '/Users/hsinhoyeh/.pyenv/shims/python3'
 let g:ycm_server_use_vim_stdout = 0
 let g:ycm_server_keep_logfiles = 0
 
@@ -157,3 +160,12 @@ let g:javascript_plugin_ngdoc = 1
 let g:javascript_plugin_flow = 1
 let g:syntastic_javascript_checkers=['eslint']
 
+" disalbe sql
+let g:omni_sql_no_default_maps = 1
+
+execute "set t_8f=\e[38;2;%lu;%lu;%lum"
+execute "set t_8b=\e[48;2;%lu;%lu;%lum"
+
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+let g:go_fmt_command = "gofmt"

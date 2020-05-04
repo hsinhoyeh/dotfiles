@@ -11,13 +11,14 @@
   re = remote
   di = diff
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+  branchdate = !git for-each-ref --sort='-authordate' --format='%(refname)%09%(authordate)' refs/heads | sed -e 's-refs/heads/--'
 [color]
   diff = auto
   status = auto
   branch = auto
   ui = true
 [core]
-  editor = vim
+  editor = /Applications/MacVim.app/Contents/MacOS/Vim
   eol = lf
 [merge]
   tool = diffmerge

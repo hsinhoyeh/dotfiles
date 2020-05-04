@@ -71,7 +71,7 @@ export TERM="xterm-256color"
 
 ### import settings from .bashrc ###
 #
-#alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
 
 export REDIS_PATH=/Users/hsinho_yeh/Workspace/github/redis-3.0.7/src
 export PATH=$PATH:$REDIS_PATH
@@ -83,7 +83,8 @@ export PATH=$PATH:/usr/local/opt/go/libexec/bin
 
 # add dir-color
 # git clone https://github.com/seebi/dircolors-solarized.git
-dircolor=~/Workspace/github/dircolors-solarized/dircolors.ansi-universal
+# brew install coreutils
+dircolor=/Users/hsinhoyeh/Workspace/utility/dircolors-solarized/dircolors.ansi-universal
 if [ "$TERM" != "dumb" ]; then
     export LS_OPTIONS='--color=auto'
     eval `dircolors $dircolor`
@@ -98,14 +99,29 @@ alias ll='ls $LS_OPTIONS -lhF'
 alias l='ls $LS_OPTIONS -lAhF'
 alias got='go test -test.v'
 alias gob='go build'
+alias gtc='go test -c'
 alias gotcov='go test -test.v -coverprofile=coverage.out'
 alias gitpr='git pull-request'
 alias dc='docker-compose'
 
 # setup docker env
-eval $(docker-machine env dev)
+#eval $(docker-machine env dev)
 # use git+hub
-eval "$(hub alias -s)"
+#eval "$(hub alias -s)"
 
 # unalias zsh's gb
-unalias gb
+# unalias gb
+
+# alias vim='mvim -v'
+
+export ANDROID_HOME=/Users/hsinhoyeh/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+export GOPATH=~/Workspace/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+eval "$(pyenv init -)"
